@@ -1,0 +1,11 @@
+[package]
+name = "kv-delete"
+version = "0.1.0"
+authors = ["EDJX <edjx@edjx.io>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+edjx = "0.1.0"
