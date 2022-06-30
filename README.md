@@ -1,6 +1,6 @@
 <!--
 title: .'EDJX Serverless Rust Samples'
-description: 'Different detailed serverless example functions in Rust to get started with Serverless@EDJX'
+description: ' detailed serverless example functions in Rust to get started with Serverless@EDJX'
 platform: EDJX
 language: Rust
 -->
