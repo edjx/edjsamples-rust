@@ -10,14 +10,22 @@ pub fn serverless(req: &mut HttpRequest) -> HttpResponse {
 
     match req.method() {
         HttpMethod::POST => {
-            let content_type_header = req.headers().get(CONTENT_TYPE).unwrap().to_str().unwrap();
+            let content_type_header = match req.headers().get(CONTENT_TYPE) {
+                Some(content_type) => content_type.to_str().unwrap(),
+                None => "",
+            };
 
             match content_type_header {
                 "application/json" => {
                     let incoming_req_body = req.body().unwrap().as_ref().unwrap();
                     let body_str = std::str::from_utf8(incoming_req_body).unwrap();
 
-                    let mut json_value: Value = serde_json::from_str(&body_str).unwrap();
+                    let parsed = serde_json::from_str(&body_str);
+                    if parsed.is_err() {
+                        return HttpResponse::from("Could not parse JSON body")
+                            .set_status(StatusCode::BAD_REQUEST);
+                    }
+                    let mut json_value: Value = parsed.unwrap();
                     if json_value.is_object() {
                         let mutable_obj = json_value.as_object_mut().unwrap();
                         mutable_obj.insert("Modified By".to_string(), json!("Example function"));
