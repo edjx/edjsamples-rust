@@ -1,7 +1,6 @@
 use edjx::{info, HttpMethod, HttpRequest, HttpResponse, StatusCode};
 use http::header::CONTENT_TYPE;
 use serde_json::{json, Value};
-use std::collections::HashMap;
 use std::str;
 use url::form_urlencoded;
 
@@ -22,9 +21,10 @@ pub fn serverless(req: &mut HttpRequest) -> HttpResponse {
 
                     let parsed = serde_json::from_str(&body_str);
                     if parsed.is_err() {
-                        return HttpResponse::from("Could not parse JSON body")
+                        return HttpResponse::from("Request body must be a valid JSON")
                             .set_status(StatusCode::BAD_REQUEST);
                     }
+
                     let mut json_value: Value = parsed.unwrap();
                     if json_value.is_object() {
                         let mutable_obj = json_value.as_object_mut().unwrap();
@@ -54,13 +54,12 @@ pub fn serverless(req: &mut HttpRequest) -> HttpResponse {
                 "application/x-www-form-urlencoded" => {
                     let incoming_req_body = req.body().unwrap().as_ref().unwrap();
 
-                    let mut form_params: HashMap<String, String> =
-                        form_urlencoded::parse(incoming_req_body)
-                            .into_owned()
-                            .collect();
-                    form_params.insert("Modified By".to_owned(), "Example Function".to_owned());
+                    let form_params = form_urlencoded::parse(incoming_req_body);
 
-                    let outgoing_body = serde_json::to_string(&form_params).unwrap();
+                    let outgoing_body = form_urlencoded::Serializer::new(String::new())
+                        .append_pair("Modified By", "Example Function")
+                        .extend_pairs(form_params)
+                        .finish();
 
                     let res = HttpResponse::from(outgoing_body).set_status(StatusCode::OK);
                     return res
