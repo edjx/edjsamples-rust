@@ -5,12 +5,12 @@ platform: EDJX
 language: Rust
 -->
 
-# Serverless Upload object on EDJX's P2P Object Store Example
+# Serverless Example to Upload Object on EDJX P2P Object Store
 
-Boilerplate code to upload content on EDJX P2P Object Store.
+Boilerplate code to upload content on the EDJX P2P Object Store.
 
-This example uses EDJX HttpRequest, HttpResponse and Storage APIs.
+This example uses EDJX HttpRequest, HttpResponse, and Storage APIs.
 
-This function is a basic demonstration of how to use the `storage::put` method to upload the object on the EDJX P2P Object Store. It expects the file name, properties and bucket id to be sent as query params in the requst URL and uses a default content to be uploaded to the store. The function checks for the error returned the library function and send corresponding HTTP status response back to user.
+This function is a basic demonstration of how to use the `storage::put` method to upload an object to the EDJX P2P Object Store. The file name, bucket id, and optionally also properties must be sent as query parameters in the request URL. The function uses a default content to be uploaded to the object store. The function checks for errors returned by the library function and sends corresponding HTTP status response back to the client.
 
-Function URL : `{function_url}?bucket_id=some_bucket_id&file_name=some_file_name&properties=SOME_KEY=SOME_VALUE`
+Function URL: `{function_url}?bucket_id=some_bucket_id&file_name=some_file_name&properties=SOME_KEY=SOME_VALUE`

@@ -5,12 +5,12 @@ platform: EDJX
 language: Rust
 -->
 
-# Serverless Set/Update attributes for a particular file on EDJX P2P Object Store Example
+# Serverless Example to Set/Update Attributes of a File on EDJX P2P Object Store
 
 Boilerplate code to set attributes associated with a file on Object Store.
 
-This example uses EDJX HttpRequest, HttpResponse and Storage APIs.
+This example uses EDJX HttpRequest, HttpResponse, and Storage APIs.
 
-This function is a basic demonstration of how to use the `storage::set_attributes` method to set associated attributes with the object on the EDJX P2P Object Store. It expects the file name and bucket id to be sent as query param in the requst URL. The function checks for the error returned the library function and send corresponding HTTP status response back to user.
+This function is a basic demonstration of how to use the `storage::set_attributes` method to set attributes associated with an object on the EDJX P2P Object Store. The file name and bucket id must be sent as query parameters in the request URL. The function checks for errors returned by the library function and sends the corresponding HTTP status response back to the client.
 
-Function URL : `{function_url}?bucket_id=some_bucket_id&file_name=some_file_name`
+Function URL: `{function_url}?bucket_id=some_bucket_id&file_name=some_file_name`

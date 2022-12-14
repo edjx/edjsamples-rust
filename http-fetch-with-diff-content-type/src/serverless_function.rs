@@ -55,7 +55,14 @@ pub fn serverless(req: &mut HttpRequest) -> HttpResponse {
         }
     };
 
-    let mut res = HttpResponse::from(fetch_res.body()).set_status(StatusCode::OK);
+    let body = match fetch_res.read_body() {
+        Ok(b) => b,
+        Err(err) => return HttpResponse::from(format!(
+            "Failed to retrieve fetch response body: {}",
+            err.to_string()
+        )).set_status(StatusCode::INTERNAL_SERVER_ERROR)
+    };
+    let mut res = HttpResponse::from(body).set_status(StatusCode::OK);
 
     let headers = res.headers_mut();
     *headers = fetch_res.headers().clone();

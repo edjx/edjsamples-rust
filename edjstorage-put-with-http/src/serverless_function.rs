@@ -3,7 +3,7 @@ use edjx::{error, info, storage, HttpRequest, HttpResponse, StatusCode, StorageR
 pub fn serverless(req: HttpRequest) -> HttpResponse {
     info!("**Storage put with http function**");
 
-    // 1.Param(Required) : "file_name" -> name that will be given to uploading content
+    // 1. param (required): "file_name" -> name that will be given to the uploaded content
     let file_name = match req.query_param_by_name("file_name") {
         Some(v) => v,
         None => {
@@ -13,7 +13,7 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
         }
     };
 
-    // 2.Param(Required) : "bucket_id" ->  in which content will be uploaded
+    // 2. param (required): "bucket_id" -> in which bucket content will be uploaded
     let bucket_id = match req.query_param_by_name("bucket_id") {
         Some(v) => v,
         None => {
@@ -23,10 +23,10 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
         }
     };
 
-    // 3.Param : buf_data (content bytes to be uploaded)
+    // 3. param: buf_data (content bytes to be uploaded)
     let buf_data = b"Sample data for example upload of storage put";
 
-    //format as properties cache-control=true,a=b
+    // 4. param (optional): "properties" -> e.g., cache-control=true,a=b
     let properties = match req.query_param_by_name("properties") {
 
         Some(v) => v,

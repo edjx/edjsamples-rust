@@ -5,19 +5,19 @@ platform: EDJX
 language: Rust
 -->
 
-# HTTP Response with HTML content
+# HTTP Response with HTML Content
 
-This function is a basic demonstration of how to use the different query params of the incoming client request and send corresponding HTML content accordingly. The same Serverless Function code serves the content for 4 pages.
+This function is a basic demonstration of how to use the different query parameters of the incoming client request. Based on the `page` query parameter, the function serves content for one of the defined HTML pages.
 
-You can try making the request to the function URL and then navigate using links on that html page to cheeckout content of other pages.
+You can send a request to the function URL and then navigate using links on that HTML page to checkout the content of other pages.
 
 ####
 
-Structure of example website
+Structure of the example website:
 
 - HOME
   - ABOUT
   - SERVICES
   - CONTACT
 
-URL to access the "About" page content : `{function_url}?page=about`
+URL to access the **About** page content: `{function_url}?page=about`

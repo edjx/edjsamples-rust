@@ -1,6 +1,6 @@
 [package]
 name = "incoming-http-req-method"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["EDJX INC <edjx@edjx.io>"]
 edition = "2018"
 
@@ -10,6 +10,6 @@ edition = "2018"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-edjx = "0.1.0"
+edjx = "0.2.0"
 http = "0.2.4"
 bytes = "1"

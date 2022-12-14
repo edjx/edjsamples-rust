@@ -5,9 +5,9 @@ platform: EDJX
 language: Rust
 -->
 
-# Serverless Http Request, Response and Fetch Example
+# Serverless Http Request, Response, and Fetch Example
 
-Serverless boilerplate code to use incoming request and make a fetch request and then return a http response.
-This example uses standard http libraries in RUST, to build Http Request and Response.
+Serverless boilerplate code to use incoming requests, make a fetch request, and then return an HTTP response.
+This example uses standard HTTP libraries in RUST to build HTTP Request and Response.
 
-The function makes a basic fetch request to `https://httpbin.org/get` and return the response.
+The function makes a basic fetch request to `https://httpbin.org/get` and returns the response.

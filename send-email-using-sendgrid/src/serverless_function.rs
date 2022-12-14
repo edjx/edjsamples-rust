@@ -20,7 +20,7 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
 
   let mut fetch_response = send_email(subject, message);
 
-  let res = HttpResponse::from(fetch_response.body())
+  let res = HttpResponse::from(fetch_response.read_body().unwrap())
     .set_status(*fetch_response.status_code())
     .set_header("Serverless".parse().unwrap(), "EDJX".parse().unwrap());
 

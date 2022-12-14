@@ -5,12 +5,12 @@ platform: EDJX
 language: Rust
 -->
 
-# Get value of Key from EDJX KV store Example
+# Get the Value of a Key from the EDJX KV Store
 
-Boilerplate code to get Key from EDJX KV store.
+Boilerplate code to get Key from EDJX KV Store.
 
-This example uses EDJX HttpRequest, HttpResponse and KV Store APIs.
+This example uses EDJX HttpRequest, HttpResponse, and KV Store APIs.
 
-This function is a basic demonstration of how to use the `kv::get` method to fetch the value set in the global P2P KV store of EDJX. It expects the key to be sent as query param in the requst URL. The function checks for the error returned the library function and send corresponding http response back to user.
+This function is a basic demonstration of how to use the `kv::get` method to fetch the value set in the global P2P KV Store of EDJX. The key must be sent as query parameter in the request URL. The function checks for errors returned by the library function and sends an HTTP response back to the client.
 
-Function URL : `{function_url}?key=some_key`
+Function URL: `{function_url}?key=some_key`

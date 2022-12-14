@@ -3,7 +3,7 @@ use edjx::{error, HttpRequest, HttpResponse, StatusCode};
 
 #[no_mangle]
 pub fn init() {
-    let mut req = match HttpRequest::from_client(true) {
+    let mut req = match HttpRequest::from_client() {
         Ok(val) => val,
         Err(e) => {
             error!("{}", e.to_string().as_str());

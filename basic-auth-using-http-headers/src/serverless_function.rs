@@ -1,5 +1,4 @@
-use edjx::{info, HttpFetch, HttpRequest, HttpResponse, StatusCode, Uri};
-use std::str::FromStr;
+use edjx::{info, HttpRequest, HttpResponse, StatusCode};
 
 pub fn serverless(req: HttpRequest) -> HttpResponse {
     info!("**Basic Auth using http headers function**");

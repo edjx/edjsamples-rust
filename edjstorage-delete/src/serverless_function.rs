@@ -3,7 +3,7 @@ use edjx::{storage,info, error, HttpRequest, HttpResponse, StatusCode, StorageRe
 pub fn serverless(req: HttpRequest) -> HttpResponse {
     info!("Content Delete Flow");
 
-    // 1.Param(Required) : "file_name" -> name that will be given to uploading content
+    // 1. param (required): "file_name" -> name that will be given to the uploaded content
     let file_name = match req.query_param_by_name("file_name") {
         Some(v) => v,
         None => {
@@ -13,7 +13,7 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
         }
     };
 
-    // 2.Param(Required) : "bucket_id" ->  in which content will be uploaded
+    // 2. param (required): "bucket_id" -> in which bucket content will be uploaded
     let bucket_id = match req.query_param_by_name("bucket_id") {
         Some(v) => v,
         None => {

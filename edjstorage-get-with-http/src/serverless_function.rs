@@ -6,7 +6,7 @@ use edjx::{
 pub fn serverless(req: HttpRequest) -> HttpResponse {
     info!("**Storage get with http function**");
 
-    // 1.Param(Required) : "file_name" -> name that will be given to uploading content
+    // 1. param (required): "file_name" -> name that will be given to the uploaded content
     let file_name = match req.query_param_by_name("file_name") {
         Some(v) => v,
         None => {
@@ -16,7 +16,7 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
         }
     };
 
-    // 2.Param(Required) : "bucket_id" ->  in which content will be uploaded
+    // 2. param (required): "bucket_id" -> in which bucket content will be uploaded
     let bucket_id = match req.query_param_by_name("bucket_id") {
         Some(v) => v,
         None => {
@@ -26,16 +26,13 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
         }
     };
     
-    let mut res_bytes: StorageResponse = match storage::get(&bucket_id, &file_name) {
+    let mut storage_res: StorageResponse = match storage::get(&bucket_id, &file_name) {
         Ok(r) => r,
         Err(e) => return HttpResponse::from(e.to_string()).set_status(e.to_http_status_code()),
     };
     info!("Get Content Successful");
 
-    let cloned_resp = res_bytes.clone();
-    let headers = cloned_resp.headers();
-
-    let mut res = HttpResponse::from(res_bytes.body());
+    let headers = storage_res.headers();
     let mut headers_n = HeaderMap::new();
     for (key, value) in headers {
         headers_n.insert(
@@ -43,6 +40,8 @@ pub fn serverless(req: HttpRequest) -> HttpResponse {
             value.parse().unwrap(),
         );
     }
+
+    let mut res = HttpResponse::from(storage_res.read_body().unwrap());
 
     let o_headers = res.headers_mut();
     *o_headers = headers_n;

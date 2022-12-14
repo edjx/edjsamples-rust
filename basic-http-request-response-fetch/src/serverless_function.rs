@@ -19,7 +19,7 @@ pub fn serverless(_req: HttpRequest) -> HttpResponse {
         }
     };
 
-    let res = HttpResponse::from(fetch_res.body())
+    let res = HttpResponse::from(fetch_res.read_body().unwrap())
         .set_status(StatusCode::OK)
         .set_header("Serverless".parse().unwrap(), "EDJX".parse().unwrap());
 
