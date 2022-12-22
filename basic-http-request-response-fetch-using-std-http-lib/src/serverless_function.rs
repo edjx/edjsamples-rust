@@ -31,7 +31,7 @@ pub fn serverless(_req: HttpRequest) -> Response<Option<Bytes>> {
 
     let res = http::Response::builder()
         .header("Serverless", "EDJX")
-        .body(Some(Bytes::from(fetch_res.body())))
+        .body(Some(Bytes::from(fetch_res.read_body().unwrap())))
         .unwrap();
 
     return res;

@@ -1,0 +1,15 @@
+[package]
+name = "http-response-streaming-abort"
+version = "0.2.0"
+authors = ["EDJX INC <edjx@edjx.io>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+edjx = "0.2.0"
+http = "0.2.4"
+bytes = "1"

@@ -5,19 +5,21 @@ platform: EDJX
 language: Rust
 -->
 
-# Serverless HTTP client Request different methods Example
+# Serverless Example for HTTP Client Request with Different Methods
 
 Boilerplate code to use HTTP request with different methods.
 
-This example uses EDJX HttpRequest, HttpResponse and Fetch APIs.
+This example uses EDJX HttpRequest, HttpResponse, and Fetch APIs.
 
-This function is a basic demonstration of how to check for the method of the incoming client request and handle accordingly. This example makes a http fetch request to a specific url of this domain `https://httpbin.org/` depending upon the incoming method type and return the response sent by the above mentioned domain.
+This function is a basic demonstration of how to check the HTTP method of the incoming client request. This example makes an HTTP fetch request to a specific URL of the `https://httpbin.org/` service depending upon the incoming method type. It then returns the response sent by the service.
 
-You can try making the request to the function URL with following different method types. Response will be populated with the respective parameters used to make the request from the function.
+You can send a request to the function URL with the following different method types. 
+
+**Note**: Response will be populated with the response received from `https://httpbin.org`. It will contain the parameters used to make the request from the function.
 
 ---
 
-#### For `PUT` method, function makes PUT request to endpoint. Response is :
+#### For the `PUT` method, the function makes a PUT request to the endpoint. The response looks like the following text:
 
 ```{
     "args": {},
